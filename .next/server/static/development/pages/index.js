@@ -120,7 +120,7 @@ const Index = () => __jsx("div", {
     lineNumber: 3
   },
   __self: undefined
-}, "testing"));
+}, "fuck off"));
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 

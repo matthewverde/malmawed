@@ -62,7 +62,7 @@ var Index = function Index() {
       lineNumber: 3
     },
     __self: this
-  }, "testing"));
+  }, "fuck off"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
