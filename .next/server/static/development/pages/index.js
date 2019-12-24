@@ -275,6 +275,8 @@ const Flex = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
 `;
 const Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
     margin-bottom: 12px;
+    width: 100%;
+    max-width: 900px;
 `;
 const Item = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.li`
     padding-bottom: 4px;
@@ -287,77 +289,77 @@ const DisplayDay = ({
   const items = dayObj.items.map(item => __jsx(Item, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 201
+      lineNumber: 203
     },
     __self: undefined
   }, item));
   return __jsx(Wrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 203
+      lineNumber: 205
     },
     __self: undefined
   }, __jsx(Flex, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 204
+      lineNumber: 206
     },
     __self: undefined
   }, __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 205
+      lineNumber: 207
     },
     __self: undefined
   }, __jsx(StyledImg, {
     src: dayObj.img,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 206
+      lineNumber: 208
     },
     __self: undefined
   })), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 208
+      lineNumber: 210
     },
     __self: undefined
   }, __jsx(StyledBox, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 209
+      lineNumber: 211
     },
     __self: undefined
   }), __jsx(DaySection, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 210
+      lineNumber: 212
     },
     __self: undefined
   }, __jsx(StyledDate, {
     as: "h3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 211
+      lineNumber: 213
     },
     __self: undefined
   }, dayObj.date), __jsx(StyledLocation, {
     as: "h4",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 212
+      lineNumber: 214
     },
     __self: undefined
   }, dayObj.location), __jsx(StyledItemBlock, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 213
+      lineNumber: 215
     },
     __self: undefined
   }, __jsx("ul", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 214
+      lineNumber: 216
     },
     __self: undefined
   }, items))))));
@@ -367,13 +369,11 @@ const TodaySection = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.di
 
 `;
 const DaySection = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
-    padding: 8px;
     opacity: 1;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
 `;
 const StyledBox = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
     position: absolute;
@@ -388,7 +388,6 @@ const StyledBox = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
 const StyledImg = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.img`
     height: 450px;
     width: 100%;
-    max-width: 900px;
     border-radius: 5px;
 `;
 const ToggleAll = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
@@ -428,7 +427,7 @@ const MistleToe = () => __jsx(Image, {
   src: "/mistletoe.jpg",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 294
+    lineNumber: 293
   },
   __self: undefined
 });
@@ -437,7 +436,7 @@ const Bells = () => __jsx(Image, {
   src: "/bells.jpg",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 298
+    lineNumber: 297
   },
   __self: undefined
 });
@@ -468,65 +467,65 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     return __jsx(ContentWrapper, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 321
+        lineNumber: 320
       },
       __self: this
     }, __jsx(BottomBar, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 322
+        lineNumber: 321
       },
       __self: this
     }, __jsx(MistleToe, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 323
+        lineNumber: 322
       },
       __self: this
     }), __jsx(ToggleAll, {
       onClick: this.onToggleClick,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 324
+        lineNumber: 323
       },
       __self: this
     }, __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 324
+        lineNumber: 323
       },
       __self: this
     }, `${showAll ? 'Hide' : 'Show'} all`)), __jsx(Bells, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 325
+        lineNumber: 324
       },
       __self: this
     })), !showAll && __jsx(TodaySection, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 328
+        lineNumber: 327
       },
       __self: this
     }, __jsx(DisplayDay, {
       dayObj: this.todayObj,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 329
+        lineNumber: 328
       },
       __self: this
     })), showAll && __jsx(Flex, {
       flexDirection: "column",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 333
+        lineNumber: 332
       },
       __self: this
     }, this.restOfIten.map(day => __jsx(DisplayDay, {
       dayObj: day,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 335
+        lineNumber: 334
       },
       __self: this
     }))));

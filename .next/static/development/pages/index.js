@@ -6901,7 +6901,7 @@ function _templateObject13() {
 }
 
 function _templateObject12() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    height: 450px;\n    width: 100%;\n    max-width: 900px;\n    border-radius: 5px;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    height: 450px;\n    width: 100%;\n    border-radius: 5px;\n"]);
 
   _templateObject12 = function _templateObject12() {
     return data;
@@ -6921,7 +6921,7 @@ function _templateObject11() {
 }
 
 function _templateObject10() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    padding: 8px;\n    opacity: 1;\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    opacity: 1;\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n"]);
 
   _templateObject10 = function _templateObject10() {
     return data;
@@ -6951,7 +6951,7 @@ function _templateObject8() {
 }
 
 function _templateObject7() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    margin-bottom: 12px;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    margin-bottom: 12px;\n    width: 100%;\n    max-width: 900px;\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -7120,7 +7120,7 @@ var DisplayDay = function DisplayDay(_ref2) {
     return __jsx(Item, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 201
+        lineNumber: 203
       },
       __self: this
     }, item);
@@ -7128,70 +7128,70 @@ var DisplayDay = function DisplayDay(_ref2) {
   return __jsx(Wrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 203
+      lineNumber: 205
     },
     __self: this
   }, __jsx(Flex, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 204
+      lineNumber: 206
     },
     __self: this
   }, __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 205
+      lineNumber: 207
     },
     __self: this
   }, __jsx(StyledImg, {
     src: dayObj.img,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 206
+      lineNumber: 208
     },
     __self: this
   })), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 208
+      lineNumber: 210
     },
     __self: this
   }, __jsx(StyledBox, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 209
+      lineNumber: 211
     },
     __self: this
   }), __jsx(DaySection, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 210
+      lineNumber: 212
     },
     __self: this
   }, __jsx(StyledDate, {
     as: "h3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 211
+      lineNumber: 213
     },
     __self: this
   }, dayObj.date), __jsx(StyledLocation, {
     as: "h4",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 212
+      lineNumber: 214
     },
     __self: this
   }, dayObj.location), __jsx(StyledItemBlock, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 213
+      lineNumber: 215
     },
     __self: this
   }, __jsx("ul", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 214
+      lineNumber: 216
     },
     __self: this
   }, items))))));
@@ -7211,7 +7211,7 @@ var MistleToe = function MistleToe() {
     src: "/mistletoe.jpg",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 294
+      lineNumber: 293
     },
     __self: this
   });
@@ -7222,7 +7222,7 @@ var Bells = function Bells() {
     src: "/bells.jpg",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 298
+      lineNumber: 297
     },
     __self: this
   });
@@ -7265,58 +7265,58 @@ function (_React$Component) {
       return __jsx(ContentWrapper, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 321
+          lineNumber: 320
         },
         __self: this
       }, __jsx(BottomBar, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 322
+          lineNumber: 321
         },
         __self: this
       }, __jsx(MistleToe, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 323
+          lineNumber: 322
         },
         __self: this
       }), __jsx(ToggleAll, {
         onClick: this.onToggleClick,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 324
+          lineNumber: 323
         },
         __self: this
       }, __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 324
+          lineNumber: 323
         },
         __self: this
       }, "".concat(showAll ? 'Hide' : 'Show', " all"))), __jsx(Bells, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 325
+          lineNumber: 324
         },
         __self: this
       })), !showAll && __jsx(TodaySection, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 328
+          lineNumber: 327
         },
         __self: this
       }, __jsx(DisplayDay, {
         dayObj: this.todayObj,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 329
+          lineNumber: 328
         },
         __self: this
       })), showAll && __jsx(Flex, {
         flexDirection: "column",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 333
+          lineNumber: 332
         },
         __self: this
       }, this.restOfIten.map(function (day) {
@@ -7324,7 +7324,7 @@ function (_React$Component) {
           dayObj: day,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 335
+            lineNumber: 334
           },
           __self: this
         });

@@ -190,6 +190,8 @@ const Flex = styled.div`
 `
 const Wrapper = styled.div`
     margin-bottom: 12px;
+    width: 100%;
+    max-width: 900px;
 `
 
 const Item = styled.li`
@@ -227,13 +229,11 @@ const TodaySection = styled.div`
 `
 
 const DaySection = styled.div`
-    padding: 8px;
     opacity: 1;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
 `
 
 const StyledBox = styled.div`
@@ -250,7 +250,6 @@ const StyledBox = styled.div`
 const StyledImg = styled.img`
     height: 450px;
     width: 100%;
-    max-width: 900px;
     border-radius: 5px;
 `
 
