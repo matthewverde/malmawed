@@ -1,5 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/index.js"],{
 
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/date/now.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/date/now.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/date/now */ "./node_modules/core-js/library/fn/date/now.js");
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/create.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/create.js ***!
@@ -155,6 +166,36 @@ function _createClass(Constructor, protoProps, staticProps) {
   if (protoProps) _defineProperties(Constructor.prototype, protoProps);
   if (staticProps) _defineProperties(Constructor, staticProps);
   return Constructor;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _defineProperty; });
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 /***/ }),
@@ -439,6 +480,19 @@ var unitlessKeys = {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (unitlessKeys);
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/fn/date/now.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/library/fn/date/now.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ../../modules/es6.date.now */ "./node_modules/core-js/library/modules/es6.date.now.js");
+module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Date.now;
 
 
 /***/ }),
@@ -1880,6 +1934,21 @@ addToUnscopables('entries');
 
 /***/ }),
 
+/***/ "./node_modules/core-js/library/modules/es6.date.now.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/es6.date.now.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 20.3.3.1 / 15.9.4.4 Date.now()
+var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
+
+$export($export.S, 'Date', { now: function () { return new Date().getTime(); } });
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/library/modules/es6.object.create.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/core-js/library/modules/es6.object.create.js ***!
@@ -2324,6 +2393,243 @@ for (var i = 0; i < DOMIterables.length; i++) {
   if (proto && !proto[TO_STRING_TAG]) hide(proto, TO_STRING_TAG, NAME);
   Iterators[NAME] = Iterators.Array;
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/dateformat/lib/dateformat.js":
+/*!***************************************************!*\
+  !*** ./node_modules/dateformat/lib/dateformat.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_RESULT__;/*
+ * Date Format 1.2.3
+ * (c) 2007-2009 Steven Levithan <stevenlevithan.com>
+ * MIT license
+ *
+ * Includes enhancements by Scott Trenda <scott.trenda.net>
+ * and Kris Kowal <cixar.com/~kris.kowal/>
+ *
+ * Accepts a date, a mask, or a date and a mask.
+ * Returns a formatted version of the given date.
+ * The date defaults to the current date/time.
+ * The mask defaults to dateFormat.masks.default.
+ */
+
+(function(global) {
+  'use strict';
+
+  var dateFormat = (function() {
+      var token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZWN]|"[^"]*"|'[^']*'/g;
+      var timezone = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g;
+      var timezoneClip = /[^-+\dA-Z]/g;
+  
+      // Regexes and supporting functions are cached through closure
+      return function (date, mask, utc, gmt) {
+  
+        // You can't provide utc if you skip other args (use the 'UTC:' mask prefix)
+        if (arguments.length === 1 && kindOf(date) === 'string' && !/\d/.test(date)) {
+          mask = date;
+          date = undefined;
+        }
+  
+        date = date || new Date;
+  
+        if(!(date instanceof Date)) {
+          date = new Date(date);
+        }
+  
+        if (isNaN(date)) {
+          throw TypeError('Invalid date');
+        }
+  
+        mask = String(dateFormat.masks[mask] || mask || dateFormat.masks['default']);
+  
+        // Allow setting the utc/gmt argument via the mask
+        var maskSlice = mask.slice(0, 4);
+        if (maskSlice === 'UTC:' || maskSlice === 'GMT:') {
+          mask = mask.slice(4);
+          utc = true;
+          if (maskSlice === 'GMT:') {
+            gmt = true;
+          }
+        }
+  
+        var _ = utc ? 'getUTC' : 'get';
+        var d = date[_ + 'Date']();
+        var D = date[_ + 'Day']();
+        var m = date[_ + 'Month']();
+        var y = date[_ + 'FullYear']();
+        var H = date[_ + 'Hours']();
+        var M = date[_ + 'Minutes']();
+        var s = date[_ + 'Seconds']();
+        var L = date[_ + 'Milliseconds']();
+        var o = utc ? 0 : date.getTimezoneOffset();
+        var W = getWeek(date);
+        var N = getDayOfWeek(date);
+        var flags = {
+          d:    d,
+          dd:   pad(d),
+          ddd:  dateFormat.i18n.dayNames[D],
+          dddd: dateFormat.i18n.dayNames[D + 7],
+          m:    m + 1,
+          mm:   pad(m + 1),
+          mmm:  dateFormat.i18n.monthNames[m],
+          mmmm: dateFormat.i18n.monthNames[m + 12],
+          yy:   String(y).slice(2),
+          yyyy: y,
+          h:    H % 12 || 12,
+          hh:   pad(H % 12 || 12),
+          H:    H,
+          HH:   pad(H),
+          M:    M,
+          MM:   pad(M),
+          s:    s,
+          ss:   pad(s),
+          l:    pad(L, 3),
+          L:    pad(Math.round(L / 10)),
+          t:    H < 12 ? dateFormat.i18n.timeNames[0] : dateFormat.i18n.timeNames[1],
+          tt:   H < 12 ? dateFormat.i18n.timeNames[2] : dateFormat.i18n.timeNames[3],
+          T:    H < 12 ? dateFormat.i18n.timeNames[4] : dateFormat.i18n.timeNames[5],
+          TT:   H < 12 ? dateFormat.i18n.timeNames[6] : dateFormat.i18n.timeNames[7],
+          Z:    gmt ? 'GMT' : utc ? 'UTC' : (String(date).match(timezone) || ['']).pop().replace(timezoneClip, ''),
+          o:    (o > 0 ? '-' : '+') + pad(Math.floor(Math.abs(o) / 60) * 100 + Math.abs(o) % 60, 4),
+          S:    ['th', 'st', 'nd', 'rd'][d % 10 > 3 ? 0 : (d % 100 - d % 10 != 10) * d % 10],
+          W:    W,
+          N:    N
+        };
+  
+        return mask.replace(token, function (match) {
+          if (match in flags) {
+            return flags[match];
+          }
+          return match.slice(1, match.length - 1);
+        });
+      };
+    })();
+
+  dateFormat.masks = {
+    'default':               'ddd mmm dd yyyy HH:MM:ss',
+    'shortDate':             'm/d/yy',
+    'mediumDate':            'mmm d, yyyy',
+    'longDate':              'mmmm d, yyyy',
+    'fullDate':              'dddd, mmmm d, yyyy',
+    'shortTime':             'h:MM TT',
+    'mediumTime':            'h:MM:ss TT',
+    'longTime':              'h:MM:ss TT Z',
+    'isoDate':               'yyyy-mm-dd',
+    'isoTime':               'HH:MM:ss',
+    'isoDateTime':           'yyyy-mm-dd\'T\'HH:MM:sso',
+    'isoUtcDateTime':        'UTC:yyyy-mm-dd\'T\'HH:MM:ss\'Z\'',
+    'expiresHeaderFormat':   'ddd, dd mmm yyyy HH:MM:ss Z'
+  };
+
+  // Internationalization strings
+  dateFormat.i18n = {
+    dayNames: [
+      'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat',
+      'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+    ],
+    monthNames: [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+      'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+    ],
+    timeNames: [
+      'a', 'p', 'am', 'pm', 'A', 'P', 'AM', 'PM'
+    ]
+  };
+
+function pad(val, len) {
+  val = String(val);
+  len = len || 2;
+  while (val.length < len) {
+    val = '0' + val;
+  }
+  return val;
+}
+
+/**
+ * Get the ISO 8601 week number
+ * Based on comments from
+ * http://techblog.procurios.nl/k/n618/news/view/33796/14863/Calculate-ISO-8601-week-and-year-in-javascript.html
+ *
+ * @param  {Object} `date`
+ * @return {Number}
+ */
+function getWeek(date) {
+  // Remove time components of date
+  var targetThursday = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+  // Change date to Thursday same week
+  targetThursday.setDate(targetThursday.getDate() - ((targetThursday.getDay() + 6) % 7) + 3);
+
+  // Take January 4th as it is always in week 1 (see ISO 8601)
+  var firstThursday = new Date(targetThursday.getFullYear(), 0, 4);
+
+  // Change date to Thursday same week
+  firstThursday.setDate(firstThursday.getDate() - ((firstThursday.getDay() + 6) % 7) + 3);
+
+  // Check if daylight-saving-time-switch occurred and correct for it
+  var ds = targetThursday.getTimezoneOffset() - firstThursday.getTimezoneOffset();
+  targetThursday.setHours(targetThursday.getHours() - ds);
+
+  // Number of weeks between target Thursday and first Thursday
+  var weekDiff = (targetThursday - firstThursday) / (86400000*7);
+  return 1 + Math.floor(weekDiff);
+}
+
+/**
+ * Get ISO-8601 numeric representation of the day of the week
+ * 1 (for Monday) through 7 (for Sunday)
+ * 
+ * @param  {Object} `date`
+ * @return {Number}
+ */
+function getDayOfWeek(date) {
+  var dow = date.getDay();
+  if(dow === 0) {
+    dow = 7;
+  }
+  return dow;
+}
+
+/**
+ * kind-of shortcut
+ * @param  {*} val
+ * @return {String}
+ */
+function kindOf(val) {
+  if (val === null) {
+    return 'null';
+  }
+
+  if (val === undefined) {
+    return 'undefined';
+  }
+
+  if (typeof val !== 'object') {
+    return typeof val;
+  }
+
+  if (Array.isArray(val)) {
+    return 'array';
+  }
+
+  return {}.toString.call(val)
+    .slice(8, -1).toLowerCase();
+};
+
+
+
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+      return dateFormat;
+    }).call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else {}
+})(this);
 
 
 /***/ }),
@@ -6533,11 +6839,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var dateformat__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! dateformat */ "./node_modules/dateformat/lib/dateformat.js");
+/* harmony import */ var dateformat__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(dateformat__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _src_timeSince__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../src/timeSince */ "./src/timeSince.js");
+
+
 
 
 
@@ -6545,10 +6858,120 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "/Users/matthewgr/code/malmawed/pages/index.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
+
+function _templateObject16() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    height: 100%;\n    width: 100px;\n"]);
+
+  _templateObject16 = function _templateObject16() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject15() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    font-family: Open Sans; \n"]);
+
+  _templateObject15 = function _templateObject15() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject14() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    height: 80px;\n    width: calc(100% - 16px);\n    z-index: 100;\n    background-color: white;\n    position: fixed;\n    bottom: 0;\n    display: flex;\n    border-top-left-radius: 5px;\n    border-top-right-radius: 5px;\n    justify-content: space-evenly;\n    align-items: center;\n    box-shadow: 0px 0px 7px #333;\n"]);
+
+  _templateObject14 = function _templateObject14() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject13() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    height: 60px;\n    width: 100px;\n    border: 1px solid black;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    border-radius: 5px;\n"]);
+
+  _templateObject13 = function _templateObject13() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject12() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    height: 400px;\n    width: 100%;\n    max-width: 900px;\n    border-radius: 5px;\n"]);
+
+  _templateObject12 = function _templateObject12() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject11() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    position: absolute;\n    background-color: white;\n    border-radius: 5px;\n    top: 0;\n    left: 0;\n    opacity: 0.65;\n    width: 100%;\n    height: 100%;\n"]);
+
+  _templateObject11 = function _templateObject11() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject10() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    padding: 8px;\n    opacity: 1;\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n"]);
+
+  _templateObject10 = function _templateObject10() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject9() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n\n"]);
+
+  _templateObject9 = function _templateObject9() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject8() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    padding-bottom: 4px;\n    font-weight: 600;\n"]);
+
+  _templateObject8 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject7() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    margin-bottom: 12px;\n"]);
+
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject6() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    display: flex;\n    position: relative;\n    ", "\n"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject5() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__["default"])(["\n    display: flex;\n    justify-content: center;\n    margin: 16px 0;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    display: flex;\n    justify-content: center;\n    margin: 16px 0;\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -6558,7 +6981,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__["default"])(["\n    width: 100px;\n    border-bottom: 1px solid black;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    width: 100px;\n    border-bottom: 1px solid black;\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -6568,7 +6991,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__["default"])(["\n    text-align: center;\n    margin-top: 16px;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    text-align: start;\n    margin-top: 16px;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -6578,7 +7001,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__["default"])(["\n    margin-bottom: 8px;\n    text-align: center;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    margin-bottom: 8px;\n    text-align: center;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -6588,7 +7011,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__["default"])(["\n    text-align: center;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    text-align: center;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -6599,81 +7022,216 @@ function _templateObject() {
 
 
 
+
+
 var itinerary = [{
   date: 'Sunday, December 22',
   location: 'Vienna, Imperial Riding School Renaissance Hotel',
+  img: '/imperialSchool.jpg',
   items: ["11:15 am - Carmen, Todd, Carolyn, Mike, Annie & Emma arrive in Vienna", "TBD - Katie arrives in Vienna", "Check into hotel: Imperial Riding School Renaissance", "Lunch - on your own", "Dinner - on your own"]
 }, {
   date: 'Monday, December 23',
   location: 'Vienna, Imperial Riding School Renaissance Hotel',
+  img: '/imperialSchool.jpg',
   items: ["Breakfast - on your own", 'Lunch - on your own', 'Dinner - on your own']
 }, {
   date: 'Tuesday, December 24 (Christmas Eve)',
   location: 'Salzburg: Wyndham Grand Salzburg',
+  img: '/wyndham.jpg',
   items: ['Breakfast - on your own', 'Carmen, Todd, Katie, Carolyn, Mike, Annie, & Emma check out of Imperial Riding School Renaissance', 'Greens take train to Salzburg  (approx 2.5 hrs)', 'Check into hotel: Wyndham Grand Salzburg', 'Lunch - on your own', '1:40 pm - Joan, Trevor, & Julia arrive in Salzburg', '3:00 pm - Saccomannos to Silent Night Chapel Tour (anyone is welcome to book tickets)', '5:35 pm - Cynthia & Cory arrive in Salzburg', 'Dinner - on your own']
 }, {
   date: 'Wednesday, December 25 (Christmas Day)',
   location: 'Salzburg: Wyndham Grand Salzburg',
+  img: '/wyndham.jpg',
   items: ['6:00 am - Emmy, James, Elliot, and Issac arrive in Munich', 'Breakfast: on your own', '8:30 am - Depart Wyndham Grand on tour bus', 'Lunch: group lunch in Unken', '6:00 pm - Return to the Wyndham Grand', 'Dinner: group Christmas dinner at Wyndham Grand']
 }, {
   date: 'Thursday, December 26 (Wedding Rehearsal Day)',
   location: 'Salzburg: Wyndham Grand Salzburg',
+  img: '/stpeterfood.jpg',
   items: ['Breakfast: on your own', '8:45 am - Jeff, Kari, & Anna arrive in Vienna, travel to Salzburg', 'Lunch: on your own', 'Syd & Bart arrive in Salzburg', '4:00 pm - Wedding Rehearsal, dinner to follow at St. Peter Stiftskeller']
 }, {
   date: 'Friday, December 27 (Matthew & Alma’s Wedding)',
   location: 'Salzburg: Wyndham Grand Salzburg',
+  img: '/stpeter.jpg',
   items: ['Breakfast - bridal party in bridal suite - Hotel Stein, everyone else on your own', '7 am - 12 pm - makeup & hair appointments', 'Lunch - bridal party in bridal suite - Hotel Stein, everyone else on your own', '2:00 pm - pictures - Hotel Sacher, carriage rides/cabs to venue afterwards', '5:00 pm - wedding ceremony - St. Peter Stiftskeller, Hayden Hall', 'Dinner at wedding reception - St. Peter Stiftskeller, Baroque Hall (childcare provided)']
 }, {
   date: 'Saturday, December 28 (Katie’s 30th Birthday)',
   location: 'Salzburg: Wyndham Grand Salzburg',
+  img: '/wyndham.jpg',
   items: ['Breakfast - on your own, Matthew & Alma may have an optional open house style brunch at Tomaselli', 'TBD - “kids” spa outing - Hotel Schloss Monchstein', 'Lunch - on your own', 'Dinner - group birthday dinner at Hotel Sacher restaurant, drinks to follow in Hotel Sacher lounge bar (cocktail/dressy attire)']
 }, {
   date: 'Sunday, December 29',
   location: 'Bad Reichenhall: Avalon Hotel Bad Reichenhall',
+  img: '/avalon.jpg',
   items: ['Breakfast - on your own', 'TBD - Carmen, Todd, Carolyn, Mike, Annie, Emma, Katie, James, Jeff, Kari, Anna, Joan, Trevor, and Julia check out of Wyndham Grand Salzburg', 'TBD - Train to Bad Reichenhall (approx. 30 min)', 'TBD - Check in to hotel: Avalon Hotel Bad Reichenhall', 'Lunch - on your own', 'Dinner - on your own']
 }, {
   date: 'Monday, December 30',
   location: 'Bad Reichenhall: Avalon Hotel Bad Reichenhall',
+  img: '/avalon.jpg',
   items: ['Breakfast - on your own', '10:50 am - Cynthia & Cory depart Salzburg for home', 'Lunch - on your own', 'Dinner - on your own']
 }, {
   date: 'Tuesday, December 31',
   location: 'Bad Reichenhall: Avalon Hotel Bad Reichenhall',
+  img: '/avalon.jpg',
   items: ['TBD - Emmy, James, Elliot, & Isaac depart Salzburg for Vienna', 'Breakfast - on your own', 'Lunch - on your own', 'Dinner - on your own']
 }, {
   date: 'Wednesday, January 1',
   location: 'Vienna: Moxy Hotel',
+  img: '/moxy.jpg',
   items: ['Breakfast - on your own', 'Lunch - on your own', 'TBD - Carmen, Todd, Carolyn, Mike, Annie, Emma, Katie, James, Jeff, Kari, Anna, Joan, Trevor, and Julia check out of Avalon Bad Reichenhall', 'TBD - Train to Vienna', 'Check into hotel: hotel near Vienna airport', 'Dinner - on your own (Emmy & James are also in Vienna this evening)']
 }, {
   date: 'Thursday, January 2',
   location: 'Going home',
+  img: '/lufthansa.jpg',
   items: ['6:15 am - Carmen, Todd, Carolyn, Mike, Annie, & Emma depart Vienna for home', '10:10 am - Jeff, Kari, & Anna depart Vienna for home', '10: 40 am - Joan, Trevor, & Julia depart Vienna for home']
 }];
-var StyledLocation = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div(_templateObject());
-var StyledDate = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div(_templateObject2());
-var StyledItemBlock = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div(_templateObject3());
-var StyledLine = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div(_templateObject4());
-var StyledLineWrapper = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div(_templateObject5());
+var StyledLocation = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject());
+var StyledDate = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject2());
+var StyledItemBlock = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject3());
+var StyledLine = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject4());
+var StyledLineWrapper = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject5());
 
 var Line = function Line() {
   return __jsx(StyledLineWrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 166
+      lineNumber: 181
     },
     __self: this
   }, __jsx(StyledLine, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 167
+      lineNumber: 182
     },
     __self: this
   }));
 };
 
+var Flex = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject6(), function (_ref) {
+  var flexDirection = _ref.flexDirection;
+  return flexDirection && "flex-direction: ".concat(flexDirection);
+});
+var Wrapper = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject7());
+var Item = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].li(_templateObject8());
+
+var DisplayDay = function DisplayDay(_ref2) {
+  var dayObj = _ref2.dayObj;
+  var items = dayObj.items.map(function (item) {
+    return __jsx(Item, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 201
+      },
+      __self: this
+    }, item);
+  });
+  return __jsx(Wrapper, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 203
+    },
+    __self: this
+  }, __jsx(Flex, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 204
+    },
+    __self: this
+  }, __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 205
+    },
+    __self: this
+  }, __jsx(StyledImg, {
+    src: dayObj.img,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 206
+    },
+    __self: this
+  })), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 208
+    },
+    __self: this
+  }, __jsx(StyledBox, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 209
+    },
+    __self: this
+  }), __jsx(DaySection, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 210
+    },
+    __self: this
+  }, __jsx(StyledDate, {
+    as: "h3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 211
+    },
+    __self: this
+  }, dayObj.date), __jsx(StyledLocation, {
+    as: "h4",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 212
+    },
+    __self: this
+  }, dayObj.location), __jsx(StyledItemBlock, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 213
+    },
+    __self: this
+  }, __jsx("ul", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 214
+    },
+    __self: this
+  }, items))))));
+};
+
+var TodaySection = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject9());
+var DaySection = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject10());
+var StyledBox = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject11());
+var StyledImg = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].img(_templateObject12());
+var ToggleAll = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject13());
+var BottomBar = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject14());
+var ContentWrapper = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject15());
+var Image = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].img(_templateObject16());
+
+var MistleToe = function MistleToe() {
+  return __jsx(Image, {
+    src: "/mistletoe.jpg",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 292
+    },
+    __self: this
+  });
+};
+
+var Bells = function Bells() {
+  return __jsx(Image, {
+    src: "/bells.jpg",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 296
+    },
+    __self: this
+  });
+};
+
 var Index =
 /*#__PURE__*/
 function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(Index, _React$Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(Index, _React$Component);
 
   function Index(props) {
     var _this;
@@ -6681,64 +7239,159 @@ function (_React$Component) {
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Index);
 
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Index).call(this, props));
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "onToggleClick", function () {
+      _this.setState(function (prev) {
+        return {
+          showAll: !prev.showAll
+        };
+      });
+    });
+
     _this.state = {
-      showAll: false
-    };
+      showAll: true
+    }; // Dec 22 2019
+
+    var daysFromStart = Object(_src_timeSince__WEBPACK_IMPORTED_MODULE_11__["default"])(1576972800000).days();
+    _this.todayObj = itinerary[daysFromStart];
+    _this.restOfIten = itinerary.slice(daysFromStart);
     return _this;
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Index, [{
     key: "render",
     value: function render() {
-      return __jsx("div", {
+      var showAll = this.state.showAll;
+      return __jsx(ContentWrapper, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 181
+          lineNumber: 319
         },
         __self: this
-      }, itinerary.map(function (day) {
-        var items = day.items.map(function (item) {
-          return __jsx("div", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 183
-            },
-            __self: this
-          }, item);
+      }, __jsx(BottomBar, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 320
+        },
+        __self: this
+      }, __jsx(Bells, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 321
+        },
+        __self: this
+      }), __jsx(MistleToe, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 322
+        },
+        __self: this
+      }), __jsx(ToggleAll, {
+        onClick: this.onToggleClick,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 323
+        },
+        __self: this
+      }, __jsx("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 323
+        },
+        __self: this
+      }, "".concat(showAll ? 'Hide' : 'Show', " all"))), __jsx(MistleToe, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 324
+        },
+        __self: this
+      }), __jsx(Bells, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 325
+        },
+        __self: this
+      })), !showAll && __jsx(TodaySection, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 328
+        },
+        __self: this
+      }, __jsx(DisplayDay, {
+        dayObj: this.todayObj,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 329
+        },
+        __self: this
+      })), showAll && __jsx(Flex, {
+        flexDirection: "column",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 333
+        },
+        __self: this
+      }, this.restOfIten.map(function (day) {
+        return __jsx(DisplayDay, {
+          dayObj: day,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 335
+          },
+          __self: this
         });
-        return __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx(StyledDate, {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 186
-          },
-          __self: this
-        }, day.date), __jsx(StyledLocation, {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 187
-          },
-          __self: this
-        }, day.location), __jsx(StyledItemBlock, {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 188
-          },
-          __self: this
-        }, items), __jsx(Line, {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 191
-          },
-          __self: this
-        }));
-      }));
+      })));
     }
   }]);
 
   return Index;
-}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_8___default.a.Component);
 
 
+
+/***/ }),
+
+/***/ "./src/timeSince.js":
+/*!**************************!*\
+  !*** ./src/timeSince.js ***!
+  \**************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return since; });
+/* harmony import */ var _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/date/now */ "./node_modules/@babel/runtime-corejs2/core-js/date/now.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0__);
+
+var MS_IN_SEC = 1000;
+var MS_IN_MIN = MS_IN_SEC * 60;
+var MS_IN_HOUR = MS_IN_MIN * 60;
+var MS_IN_DAY = MS_IN_HOUR * 24;
+var MS_IN_WEEK = MS_IN_DAY * 7;
+function since(timestamp) {
+  return {
+    "millis": function millis() {
+      return _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0___default()() - timestamp;
+    },
+    "secs": function secs() {
+      return Math.floor((_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0___default()() - timestamp) / MS_IN_SEC);
+    },
+    "mins": function mins() {
+      return Math.floor((_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0___default()() - timestamp) / MS_IN_MIN);
+    },
+    "hours": function hours() {
+      return Math.floor((_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0___default()() - timestamp) / MS_IN_HOUR);
+    },
+    "days": function days() {
+      return Math.floor((_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0___default()() - timestamp) / MS_IN_DAY);
+    },
+    "weeks": function weeks() {
+      return Math.floor((_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0___default()() - timestamp) / MS_IN_WEEK);
+    }
+  };
+}
+;
 
 /***/ }),
 

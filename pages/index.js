@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import dateFormat from 'dateformat';
+
+import since from '../src/timeSince';
 
 const itinerary = [
     {
         date: 'Sunday, December 22',
         location: 'Vienna, Imperial Riding School Renaissance Hotel',
+        img: '/imperialSchool.jpg',
         items: [
             "11:15 am - Carmen, Todd, Carolyn, Mike, Annie & Emma arrive in Vienna",
             "TBD - Katie arrives in Vienna",
@@ -16,6 +20,7 @@ const itinerary = [
     {
         date: 'Monday, December 23',
         location: 'Vienna, Imperial Riding School Renaissance Hotel',
+        img: '/imperialSchool.jpg',
         items: [
             "Breakfast - on your own",
             'Lunch - on your own',
@@ -25,6 +30,7 @@ const itinerary = [
     {
         date: 'Tuesday, December 24 (Christmas Eve)',
         location: 'Salzburg: Wyndham Grand Salzburg',
+        img: '/wyndham.jpg',
         items: [
             'Breakfast - on your own',
             'Carmen, Todd, Katie, Carolyn, Mike, Annie, & Emma check out of Imperial Riding School Renaissance',
@@ -40,6 +46,7 @@ const itinerary = [
     {
         date: 'Wednesday, December 25 (Christmas Day)',
         location: 'Salzburg: Wyndham Grand Salzburg',
+        img: '/wyndham.jpg',
         items: [
             '6:00 am - Emmy, James, Elliot, and Issac arrive in Munich',
             'Breakfast: on your own',
@@ -52,6 +59,7 @@ const itinerary = [
     {
         date: 'Thursday, December 26 (Wedding Rehearsal Day)',
         location: 'Salzburg: Wyndham Grand Salzburg',
+        img: '/stpeterfood.jpg',
         items: [
             'Breakfast: on your own',
             '8:45 am - Jeff, Kari, & Anna arrive in Vienna, travel to Salzburg',
@@ -63,6 +71,7 @@ const itinerary = [
     {
         date: 'Friday, December 27 (Matthew & Alma’s Wedding)',
         location: 'Salzburg: Wyndham Grand Salzburg',
+        img: '/stpeter.jpg',
         items: [
             'Breakfast - bridal party in bridal suite - Hotel Stein, everyone else on your own',
             '7 am - 12 pm - makeup & hair appointments',
@@ -75,6 +84,7 @@ const itinerary = [
     {
         date: 'Saturday, December 28 (Katie’s 30th Birthday)',
         location: 'Salzburg: Wyndham Grand Salzburg',
+        img: '/wyndham.jpg',
         items: [
             'Breakfast - on your own, Matthew & Alma may have an optional open house style brunch at Tomaselli',
             'TBD - “kids” spa outing - Hotel Schloss Monchstein',
@@ -85,6 +95,7 @@ const itinerary = [
     {
         date: 'Sunday, December 29',
         location: 'Bad Reichenhall: Avalon Hotel Bad Reichenhall',
+        img: '/avalon.jpg',
         items: [
             'Breakfast - on your own',
             'TBD - Carmen, Todd, Carolyn, Mike, Annie, Emma, Katie, James, Jeff, Kari, Anna, Joan, Trevor, and Julia check out of Wyndham Grand Salzburg',
@@ -97,6 +108,7 @@ const itinerary = [
     {
         date: 'Monday, December 30',
         location: 'Bad Reichenhall: Avalon Hotel Bad Reichenhall',
+        img: '/avalon.jpg',
         items: [
             'Breakfast - on your own',
             '10:50 am - Cynthia & Cory depart Salzburg for home',
@@ -107,6 +119,7 @@ const itinerary = [
     {
         date: 'Tuesday, December 31',
         location: 'Bad Reichenhall: Avalon Hotel Bad Reichenhall',
+        img: '/avalon.jpg',
         items: [
             'TBD - Emmy, James, Elliot, & Isaac depart Salzburg for Vienna',
             'Breakfast - on your own',
@@ -117,6 +130,7 @@ const itinerary = [
     {
         date: 'Wednesday, January 1',
         location: 'Vienna: Moxy Hotel',
+        img: '/moxy.jpg',
         items: [
             'Breakfast - on your own',
             'Lunch - on your own',
@@ -129,6 +143,7 @@ const itinerary = [
     {
         date: 'Thursday, January 2',
         location: 'Going home',
+        img: '/lufthansa.jpg',
         items: [
             '6:15 am - Carmen, Todd, Carolyn, Mike, Annie, & Emma depart Vienna for home',
             '10:10 am - Jeff, Kari, & Anna depart Vienna for home',
@@ -147,7 +162,7 @@ const StyledDate = styled.div`
 `;
 
 const StyledItemBlock = styled.div`
-    text-align: center;
+    text-align: start;
     margin-top: 16px;
 `;
 
@@ -168,31 +183,162 @@ const Line = () => (
     </StyledLineWrapper>
 );
 
+const Flex = styled.div`
+    display: flex;
+    position: relative;
+    ${({ flexDirection }) => flexDirection && `flex-direction: ${flexDirection}`}
+`
+const Wrapper = styled.div`
+    margin-bottom: 12px;
+`
+
+const Item = styled.li`
+    padding-bottom: 4px;
+    font-weight: 600;
+`
+
+const DisplayDay = ({ dayObj }) => {
+    const items = dayObj.items.map(item => <Item>{item}</Item>);
+    return (
+        <Wrapper>
+            <Flex>
+                <div>
+                    <StyledImg src={dayObj.img} />
+                </div>
+                <div>
+                    <StyledBox />
+                    <DaySection>
+                        <StyledDate as="h3">{dayObj.date}</StyledDate>
+                        <StyledLocation as="h4">{dayObj.location}</StyledLocation>
+                        <StyledItemBlock>
+                            <ul>
+                                {items}
+                            </ul>
+                        </StyledItemBlock>
+                    </DaySection>
+                </div>
+            </Flex>
+        </Wrapper>
+    )
+};
+
+const TodaySection = styled.div`
+
+`
+
+const DaySection = styled.div`
+    padding: 8px;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+`
+
+const StyledBox = styled.div`
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    opacity: 0.65;
+    width: 100%;
+    height: 100%;
+`
+
+const StyledImg = styled.img`
+    height: 400px;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 5px;
+`
+
+const ToggleAll = styled.div`
+    height: 60px;
+    width: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+`
+
+const BottomBar = styled.div`
+    height: 80px;
+    width: calc(100% - 16px);
+    z-index: 100;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 0px 0px 7px #333;
+`
+
+const ContentWrapper = styled.div`
+    font-family: Open Sans; 
+`
+
+const Image = styled.img`
+    height: 100%;
+    width: 100px;
+`
+
+const MistleToe = () => (
+    <Image src="/mistletoe.jpg" />
+)
+
+const Bells = () => (
+    <Image src="/bells.jpg" />
+)
+
 export default class Index extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showAll: false,
+            showAll: true,
         }
+        // Dec 22 2019
+        const daysFromStart = since(1576972800000).days();
+        this.todayObj = itinerary[daysFromStart];
+        this.restOfIten = itinerary.slice(daysFromStart);
+    }
+
+    onToggleClick = () => {
+        this.setState(prev => ({ showAll: !prev.showAll }));
     }
 
     render() {
+        const { showAll } = this.state;
+
         return (
-            <div>
-                {itinerary.map(day => {
-                    const items = day.items.map(item => <div>{item}</div>);
-                    return (
-                        <>
-                            <StyledDate>{day.date}</StyledDate>
-                            <StyledLocation>{day.location}</StyledLocation>
-                            <StyledItemBlock>
-                                {items}
-                            </StyledItemBlock>
-                            <Line />
-                        </>
-                    )
-                })}
-            </div>
+            <ContentWrapper>
+                <BottomBar>
+                    <Bells />
+                    <MistleToe />
+                    <ToggleAll onClick={this.onToggleClick}><div>{`${showAll ? 'Hide' : 'Show'} all`}</div></ToggleAll>
+                    <MistleToe />
+                    <Bells />
+                </BottomBar>
+                {!showAll &&
+                    <TodaySection>
+                        <DisplayDay dayObj={this.todayObj} />
+                    </TodaySection>
+                }
+                {showAll &&
+                    <Flex flexDirection="column">
+                        {this.restOfIten.map(day => (
+                            <DisplayDay dayObj={day} />
+                        ))}
+                    </Flex>
+                }
+            </ContentWrapper>
         )
     }
 }
+
+
