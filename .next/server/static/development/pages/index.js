@@ -386,7 +386,7 @@ const StyledBox = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
     height: 100%;
 `;
 const StyledImg = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.img`
-    height: 400px;
+    height: 450px;
     width: 100%;
     max-width: 900px;
     border-radius: 5px;
@@ -415,7 +415,9 @@ const BottomBar = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
     box-shadow: 0px 0px 7px #333;
 `;
 const ContentWrapper = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
-    font-family: Open Sans; 
+    font-family: Open Sans;
+    background-image: url("tree.jpg");
+    height: calc(100vh - 16px);
 `;
 const Image = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.img`
     height: 100%;
@@ -426,7 +428,7 @@ const MistleToe = () => __jsx(Image, {
   src: "/mistletoe.jpg",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 292
+    lineNumber: 294
   },
   __self: undefined
 });
@@ -435,7 +437,7 @@ const Bells = () => __jsx(Image, {
   src: "/bells.jpg",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 296
+    lineNumber: 298
   },
   __self: undefined
 });
@@ -451,7 +453,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     });
 
     this.state = {
-      showAll: true
+      showAll: false
     }; // Dec 22 2019
 
     const daysFromStart = Object(_src_timeSince__WEBPACK_IMPORTED_MODULE_4__["default"])(1576972800000).days();
@@ -466,47 +468,35 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     return __jsx(ContentWrapper, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 319
+        lineNumber: 321
       },
       __self: this
     }, __jsx(BottomBar, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 320
-      },
-      __self: this
-    }, __jsx(Bells, {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 321
-      },
-      __self: this
-    }), __jsx(MistleToe, {
-      __source: {
-        fileName: _jsxFileName,
         lineNumber: 322
+      },
+      __self: this
+    }, __jsx(MistleToe, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 323
       },
       __self: this
     }), __jsx(ToggleAll, {
       onClick: this.onToggleClick,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 323
+        lineNumber: 324
       },
       __self: this
     }, __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 323
-      },
-      __self: this
-    }, `${showAll ? 'Hide' : 'Show'} all`)), __jsx(MistleToe, {
-      __source: {
-        fileName: _jsxFileName,
         lineNumber: 324
       },
       __self: this
-    }), __jsx(Bells, {
+    }, `${showAll ? 'Hide' : 'Show'} all`)), __jsx(Bells, {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 325

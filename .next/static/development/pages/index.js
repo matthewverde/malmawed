@@ -6871,7 +6871,7 @@ function _templateObject16() {
 }
 
 function _templateObject15() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    font-family: Open Sans; \n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    font-family: Open Sans;\n    background-image: url(\"tree.jpg\");\n    height: calc(100vh - 16px);\n"]);
 
   _templateObject15 = function _templateObject15() {
     return data;
@@ -6901,7 +6901,7 @@ function _templateObject13() {
 }
 
 function _templateObject12() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    height: 400px;\n    width: 100%;\n    max-width: 900px;\n    border-radius: 5px;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__["default"])(["\n    height: 450px;\n    width: 100%;\n    max-width: 900px;\n    border-radius: 5px;\n"]);
 
   _templateObject12 = function _templateObject12() {
     return data;
@@ -7211,7 +7211,7 @@ var MistleToe = function MistleToe() {
     src: "/mistletoe.jpg",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 292
+      lineNumber: 294
     },
     __self: this
   });
@@ -7222,7 +7222,7 @@ var Bells = function Bells() {
     src: "/bells.jpg",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 296
+      lineNumber: 298
     },
     __self: this
   });
@@ -7249,7 +7249,7 @@ function (_React$Component) {
     });
 
     _this.state = {
-      showAll: true
+      showAll: false
     }; // Dec 22 2019
 
     var daysFromStart = Object(_src_timeSince__WEBPACK_IMPORTED_MODULE_11__["default"])(1576972800000).days();
@@ -7265,47 +7265,35 @@ function (_React$Component) {
       return __jsx(ContentWrapper, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 319
+          lineNumber: 321
         },
         __self: this
       }, __jsx(BottomBar, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 320
-        },
-        __self: this
-      }, __jsx(Bells, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 321
-        },
-        __self: this
-      }), __jsx(MistleToe, {
-        __source: {
-          fileName: _jsxFileName,
           lineNumber: 322
+        },
+        __self: this
+      }, __jsx(MistleToe, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 323
         },
         __self: this
       }), __jsx(ToggleAll, {
         onClick: this.onToggleClick,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 323
+          lineNumber: 324
         },
         __self: this
       }, __jsx("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 323
-        },
-        __self: this
-      }, "".concat(showAll ? 'Hide' : 'Show', " all"))), __jsx(MistleToe, {
-        __source: {
-          fileName: _jsxFileName,
           lineNumber: 324
         },
         __self: this
-      }), __jsx(Bells, {
+      }, "".concat(showAll ? 'Hide' : 'Show', " all"))), __jsx(Bells, {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 325

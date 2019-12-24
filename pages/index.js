@@ -248,7 +248,7 @@ const StyledBox = styled.div`
 `
 
 const StyledImg = styled.img`
-    height: 400px;
+    height: 450px;
     width: 100%;
     max-width: 900px;
     border-radius: 5px;
@@ -280,7 +280,9 @@ const BottomBar = styled.div`
 `
 
 const ContentWrapper = styled.div`
-    font-family: Open Sans; 
+    font-family: Open Sans;
+    background-image: url("tree.jpg");
+    height: calc(100vh - 16px);
 `
 
 const Image = styled.img`
@@ -300,7 +302,7 @@ export default class Index extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showAll: true,
+            showAll: false,
         }
         // Dec 22 2019
         const daysFromStart = since(1576972800000).days();
@@ -318,10 +320,8 @@ export default class Index extends React.Component {
         return (
             <ContentWrapper>
                 <BottomBar>
-                    <Bells />
                     <MistleToe />
                     <ToggleAll onClick={this.onToggleClick}><div>{`${showAll ? 'Hide' : 'Show'} all`}</div></ToggleAll>
-                    <MistleToe />
                     <Bells />
                 </BottomBar>
                 {!showAll &&
