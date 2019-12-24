@@ -7073,7 +7073,7 @@ var itinerary = [{
   date: 'Tuesday, December 31',
   location: 'Bad Reichenhall: Avalon Hotel Bad Reichenhall',
   img: '/avalon.jpg',
-  items: ['TBD - Emmy, James, Elliot, & Isaac depart Salzburg for Vienna', 'Breakfast - on your own', 'Lunch - on your own', 'Dinner - on your own']
+  items: ['TBD - Emmy, James, Elliot, & Isaac depart Salzburg for Vienna', 'Breakfast - on your own', 'Lunch - on your own', 'Dinner - dinner + drinks in Unken for those interested, details TBD']
 }, {
   date: 'Wednesday, January 1',
   location: 'Vienna: Moxy Hotel',

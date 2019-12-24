@@ -124,7 +124,7 @@ const itinerary = [
             'TBD - Emmy, James, Elliot, & Isaac depart Salzburg for Vienna',
             'Breakfast - on your own',
             'Lunch - on your own',
-            'Dinner - on your own'
+            'Dinner - dinner + drinks in Unken for those interested, details TBD'
         ]
     },
     {
