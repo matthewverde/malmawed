@@ -76,7 +76,7 @@ const itinerary = [
             'Breakfast - bridal party in bridal suite - Hotel Stein, everyone else on your own',
             '7 am - 12 pm - makeup & hair appointments',
             'Lunch - bridal party in bridal suite - Hotel Stein, everyone else on your own',
-            '2:00 pm - pictures - Hotel Sacher, carriage rides/cabs to venue afterwards',
+            '1:15 pm - pictures - Hotel Sacher, carriage rides/cabs to venue afterwards',
             '5:00 pm - wedding ceremony - St. Peter Stiftskeller, Hayden Hall',
             'Dinner at wedding reception - St. Peter Stiftskeller, Baroque Hall (childcare provided)'
         ]
@@ -86,7 +86,7 @@ const itinerary = [
         location: 'Salzburg: Wyndham Grand Salzburg',
         img: '/wyndham.jpg',
         items: [
-            'Breakfast - on your own, Matthew & Alma may have an optional open house style brunch at Tomaselli',
+            'Breakfast - on your own, Matthew & Alma available to meet at Hotel Sacher cafe',
             'TBD - “kids” spa outing - Hotel Schloss Monchstein',
             'Lunch - on your own',
             'Dinner - group birthday dinner at Hotel Sacher restaurant, drinks to follow in Hotel Sacher lounge bar (cocktail/dressy attire)'
@@ -135,7 +135,7 @@ const itinerary = [
             'Breakfast - on your own',
             'Lunch - on your own',
             'TBD - Carmen, Todd, Carolyn, Mike, Annie, Emma, Katie, James, Jeff, Kari, Anna, Joan, Trevor, and Julia check out of Avalon Bad Reichenhall',
-            'TBD - Train to Vienna',
+            'TBD - Train directly to Vienna airport with the railjet train',
             'Check into hotel: hotel near Vienna airport',
             'Dinner - on your own (Emmy & James are also in Vienna this evening)'
         ]

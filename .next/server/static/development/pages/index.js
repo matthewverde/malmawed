@@ -199,12 +199,12 @@ const itinerary = [{
   date: 'Friday, December 27 (Matthew & Alma’s Wedding)',
   location: 'Salzburg: Wyndham Grand Salzburg',
   img: '/stpeter.jpg',
-  items: ['Breakfast - bridal party in bridal suite - Hotel Stein, everyone else on your own', '7 am - 12 pm - makeup & hair appointments', 'Lunch - bridal party in bridal suite - Hotel Stein, everyone else on your own', '2:00 pm - pictures - Hotel Sacher, carriage rides/cabs to venue afterwards', '5:00 pm - wedding ceremony - St. Peter Stiftskeller, Hayden Hall', 'Dinner at wedding reception - St. Peter Stiftskeller, Baroque Hall (childcare provided)']
+  items: ['Breakfast - bridal party in bridal suite - Hotel Stein, everyone else on your own', '7 am - 12 pm - makeup & hair appointments', 'Lunch - bridal party in bridal suite - Hotel Stein, everyone else on your own', '1:15 pm - pictures - Hotel Sacher, carriage rides/cabs to venue afterwards', '5:00 pm - wedding ceremony - St. Peter Stiftskeller, Hayden Hall', 'Dinner at wedding reception - St. Peter Stiftskeller, Baroque Hall (childcare provided)']
 }, {
   date: 'Saturday, December 28 (Katie’s 30th Birthday)',
   location: 'Salzburg: Wyndham Grand Salzburg',
   img: '/wyndham.jpg',
-  items: ['Breakfast - on your own, Matthew & Alma may have an optional open house style brunch at Tomaselli', 'TBD - “kids” spa outing - Hotel Schloss Monchstein', 'Lunch - on your own', 'Dinner - group birthday dinner at Hotel Sacher restaurant, drinks to follow in Hotel Sacher lounge bar (cocktail/dressy attire)']
+  items: ['Breakfast - on your own, Matthew & Alma available to meet at Hotel Sacher cafe', 'TBD - “kids” spa outing - Hotel Schloss Monchstein', 'Lunch - on your own', 'Dinner - group birthday dinner at Hotel Sacher restaurant, drinks to follow in Hotel Sacher lounge bar (cocktail/dressy attire)']
 }, {
   date: 'Sunday, December 29',
   location: 'Bad Reichenhall: Avalon Hotel Bad Reichenhall',
@@ -224,7 +224,7 @@ const itinerary = [{
   date: 'Wednesday, January 1',
   location: 'Vienna: Moxy Hotel',
   img: '/moxy.jpg',
-  items: ['Breakfast - on your own', 'Lunch - on your own', 'TBD - Carmen, Todd, Carolyn, Mike, Annie, Emma, Katie, James, Jeff, Kari, Anna, Joan, Trevor, and Julia check out of Avalon Bad Reichenhall', 'TBD - Train to Vienna', 'Check into hotel: hotel near Vienna airport', 'Dinner - on your own (Emmy & James are also in Vienna this evening)']
+  items: ['Breakfast - on your own', 'Lunch - on your own', 'TBD - Carmen, Todd, Carolyn, Mike, Annie, Emma, Katie, James, Jeff, Kari, Anna, Joan, Trevor, and Julia check out of Avalon Bad Reichenhall', 'TBD - Train directly to Vienna airport with the railjet train', 'Check into hotel: hotel near Vienna airport', 'Dinner - on your own (Emmy & James are also in Vienna this evening)']
 }, {
   date: 'Thursday, January 2',
   location: 'Going home',
